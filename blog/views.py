@@ -23,4 +23,11 @@ def blog(request):
     }
 
     return render(request, "blog.html", context)
-    
+
+def about(request):
+    context = {
+      
+        
+    }
+
+    return render(request, "about.html", context)
