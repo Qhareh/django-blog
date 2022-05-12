@@ -1,0 +1,72 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row mt-5 justify-content-center ">
+        <div class="col-lg-10 mt-3 mb-4 text-center">
+            <h2>Contact Us</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis dolor, accusamus consequuntur delectus veniam, ex reprehenderit fuga iste quas eius dolorum illo sed, nihil a minus ad ipsa itaque repellat?</p>
+        </div>
+        <div class="col-lg-4 mb-4 text-center">
+            <div class="card border-0 shadow-lg  h-100">
+                <div class="card-body">
+                    <p class="text-center"><i class="fa fa-map-marker" aria-hidden="true"></i></p>
+                    <p>Address</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4 text-center">
+            <div class="card border-0 shadow-lg h-100">
+                <div class="card-body">
+                    <p> <i class="fa fa-phone" aria-hidden="true"></i></p>
+                    <p>Phone number</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 mb-4 text-center">
+            <div class="card border-0 shadow-lg h-100">
+                <div class="card-body">
+                    <p><i class="fa fa-envelope" aria-hidden="true"></i></p>
+                    <p>Email</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 mt-5">
+            <div class="card border-0 shadow-lg ">
+                <div class="card-body">
+                    <form action="{% url 'contact.form' %}" method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label>Name</label>
+                            <input class="form-control" name="name" type="name" required />
+                        </div>
+                        <div class="mb-3">
+                            <label>Email</label>
+                            <input class="form-control" name="email" type="email" required />
+                        </div>
+                        <div class="mb-3">
+                            <label>Phone number</label>
+                            <input class="form-control" name="email" type="number" required />
+                        </div>
+                        <div class="mb-3">
+                            <label>Message</label>
+                            <textarea class="form-control" name="message"></textarea>
+                        </div>
+                        <div class="float-end">
+
+                            <button type="submit" class="btn btn-warning "><i class="fa fa-paper-plane"
+                                    aria-hidden="true"></i> &nbsp SEND MESSAGE</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}
