@@ -3,36 +3,39 @@
 {% block content %}
 
 <div class="container">
-    <div class="row mt-5 justify-content-center ">
-        <div class="col-lg-10 mt-3 mb-4 text-center">
-            <h2>Contact Us</h2>
+    <div class="row justify-content-center ">
+        <div class="col-lg-10 mb-4 text-center">
+            <h2>Contact</h2>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis dolor, accusamus consequuntur delectus veniam, ex reprehenderit fuga iste quas eius dolorum illo sed, nihil a minus ad ipsa itaque repellat?</p>
         </div>
         <div class="col-lg-4 mb-4 text-center">
             <div class="card border-0 shadow-lg  h-100">
                 <div class="card-body">
-                    <p class="text-center"><i class="fa fa-map-marker" aria-hidden="true"></i></p>
+                    <p class="text-center"><i class="fa fa-map-marker text-warning" aria-hidden="true"></i></p>
                     <p>Address</p>
+                    <p>C025-LYXkhareh street, Kikuyu</p>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 mb-4 text-center">
             <div class="card border-0 shadow-lg h-100">
                 <div class="card-body">
-                    <p> <i class="fa fa-phone" aria-hidden="true"></i></p>
-                    <p>Phone number</p>
+                    <p> <i class="fa fa-phone text-warning" aria-hidden="true"></i></p>
+                    <p>Call</p>
+                    <p>+254707584210</p>
                 </div>
             </div>
         </div>
         <div class="col-lg-4 mb-4 text-center">
             <div class="card border-0 shadow-lg h-100">
                 <div class="card-body">
-                    <p><i class="fa fa-envelope" aria-hidden="true"></i></p>
+                    <p><i class="fa fa-envelope text-warning" aria-hidden="true"></i></p>
                     <p>Email</p>
+                    <p>info@kareh.com</p>
                 </div>
             </div>
         </div>
-        <div class="col-lg-7 mt-5">
+        <div class="col-lg-7 ">
             <div class="card border-0 shadow-lg ">
                 <div class="card-body">
                     <form action="{% url 'contact.form' %}" method="POST">
@@ -47,7 +50,7 @@
                         </div>
                         <div class="mb-3">
                             <label>Phone number</label>
-                            <input class="form-control" name="email" type="number" required />
+                            <input class="form-control" name="Phone" type="number" required />
                         </div>
                         <div class="mb-3">
                             <label>Message</label>
