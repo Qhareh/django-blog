@@ -6,7 +6,9 @@
     <div class="row justify-content-center ">
         <div class="col-lg-10 mb-4 text-center">
             <h2>Contact</h2>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis dolor, accusamus consequuntur delectus veniam, ex reprehenderit fuga iste quas eius dolorum illo sed, nihil a minus ad ipsa itaque repellat?</p>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Perspiciatis dolor, accusamus consequuntur
+                delectus veniam, ex reprehenderit fuga iste quas eius dolorum illo sed, nihil a minus ad ipsa itaque
+                repellat?</p>
         </div>
         <div class="col-lg-4 mb-4 text-center">
             <div class="card border-0 shadow-lg  h-100">
@@ -38,7 +40,7 @@
         <div class="col-lg-7 ">
             <div class="card border-0 shadow-lg ">
                 <div class="card-body">
-                    <form action="{% url 'contact.form' %}" method="POST">
+                    <form  method="POST" id="contactForm">
                         {% csrf_token %}
                         <div class="mb-3">
                             <label>Name</label>
@@ -71,5 +73,36 @@
 {% endblock %}
 
 {% block scripts %}
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+    $(document).ready(function () {
+
+        $("#contactForm").on("submit", function (e) {
+            e.preventDefault();
+
+            $.ajax({
+                dataType: "json",
+                url: "{% url 'contact.ajax.submission' %}",
+                type: "POST",
+                data: $("#contactForm").serialize(),
+                success: function (data) {
+                    if(data.success){
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Submitted',
+                        text: data.message,
+                       
+                    })
+                    } 
+                },
+                error: function (data) {
+                    console.log(data)
+                }
+            });
+        })
+    });
+</script>
 
 {% endblock %}

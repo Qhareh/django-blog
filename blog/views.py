@@ -1,6 +1,7 @@
 
+from multiprocessing import context
 from django.shortcuts import render
- 
+from django.http import HttpResponseRedirect, JsonResponse
 from .models import Writer
 
 # Create your views here.
@@ -62,3 +63,17 @@ def successRedirect(request):
     }
 
     return render(request, "success.html", context)
+
+def ajaxContactSubmission(request):
+   
+    email = request.POST["email"]
+    name = request.POST["name"]
+    number = request.POST["Phone"]
+    message = request.POST["message"]
+
+    context = {
+        "success": True,
+        "message": "Thank you "  +name+ " for your message"
+    }
+
+    return JsonResponse(context)
