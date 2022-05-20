@@ -2,17 +2,14 @@
 from multiprocessing import context
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
-from .models import Writer
 
 # Create your views here.
 def home(request):
 
-    user = Writer("John", "Macharia")
 
     context = {
         "first_name": 'cynthia',
         "last_name": 'khareh',
-        "writer": user,
         
     }
 

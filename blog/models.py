@@ -28,7 +28,7 @@ class Article(models.Model):
 
     ARTICLE_STATUS = (
         (DRAFT, "Draft"),
-        (LIVE, "Live")
+        (LIVE, "Live"),
         (IN_REVIEW, "In Review"),
         (INACTIVE, "Inactive")
     )
