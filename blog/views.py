@@ -1,24 +1,26 @@
 
 from multiprocessing import context
+from turtle import title
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
-
+from .models import *
+from django.contrib import messages
 # Create your views here.
 def home(request):
-
+    ## This returns a queryset containing all articles in the database
+    articles=Article.objects.filter(status = Article.LIVE).filter(created_at__year = 2022)
 
     context = {
-        "first_name": 'cynthia',
-        "last_name": 'khareh',
-        
-    }
+        "articles": articles
+     }
 
     return render(request, "index.html", context)
     
 def blog(request):
+    articles=Article.objects.filter(status = Article.LIVE)
     context = {
       
-        
+        "articles": articles
     }
 
     return render(request, "blog.html", context)
@@ -74,3 +76,39 @@ def ajaxContactSubmission(request):
     }
 
     return JsonResponse(context)
+
+def getArticleDetails(request, id):
+
+    try:
+        article = Article.objects.get(pk=id)
+    except Article.DoesNotExist:
+
+        messages.info("Sorry, that article does not exist")
+        return HttpResponseRedirect("/")
+
+    categories =Category.objects.all()
+    all_articles = Article.objects.exclude(pk=id)
+
+    context = {
+        "article":article,
+        "categories": categories,
+        "more_articles": all_articles
+    }
+
+    return render(request, "article-details.html", context)    
+
+def searchArticles(request):
+
+    query = request.POST["query"]
+
+    articles = Article.objects.filter(
+        status = Article.LIVE).filter(title__contains=query).filter(
+            content__contains = query
+        )  
+        
+
+    context = {
+        "articles": articles
+    } 
+
+    return render(request, "blog.html", context)     
