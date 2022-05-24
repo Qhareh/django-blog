@@ -5,6 +5,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, JsonResponse
 from .models import *
 from django.contrib import messages
+from django.core.mail import send_mail
 # Create your views here.
 def home(request):
     ## This returns a queryset containing all articles in the database
@@ -50,6 +51,7 @@ def submitContactForm(request):
       name = form_data["name"]
       number = form_data["number"]
       message = form_data["message"]
+
  
       return HttpResponseRedirect("/form/success")
     
@@ -65,10 +67,25 @@ def successRedirect(request):
 
 def ajaxContactSubmission(request):
    
+
     email = request.POST["email"]
     name = request.POST["name"]
     number = request.POST["Phone"]
     message = request.POST["message"]
+
+    feedback= Feedback.objects.create(
+        name= name,
+        message = message,
+        email = email
+    )
+  
+    send_mail(
+        "New message",
+        "Hi Admin, you have a new message",
+        "admin@gmail.com",
+        ['admin@gmail.com'],
+        fail_silently=False
+    )
 
     context = {
         "success": True,

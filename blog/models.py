@@ -1,5 +1,7 @@
+from email import message
 from email.mime import image
 from os import link
+from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -75,3 +77,11 @@ class Reaction(models.Model):
 
     def __str__(self):
        return "Reaction by: "+ self.reader.email               
+
+
+class Feedback(models.Model):
+    message = models.TextField()
+    name = models.CharField(null=True, blank=True, max_length=100)
+    email = models.EmailField(null=True, blank=True, max_length=200)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
