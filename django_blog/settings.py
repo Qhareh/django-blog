@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
-    'staff.apps.StaffConfig'
+    'staff.apps.StaffConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,5 @@ EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = '9e894be563800c'
 EMAIL_HOST_PASSWORD = '8d43c4db9d33e7'
 EMAIL_PORT = '2525'
+
+LOGIN_REDIRECT_URL = "/"
