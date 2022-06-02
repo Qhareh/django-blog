@@ -12,5 +12,6 @@ urlpatterns = [
     path("ajax/contact/submission", ajaxContactSubmission, name="contact.ajax.submission"),
 
     path("article/<id>details", getArticleDetails, name="article.details"),
-    path("serach/articles", searchArticles, name="search")
+    path("serach/articles", searchArticles, name="search"),
+    path(" login/redirect", redirectAfterLogin, name="login.redirect")
 ]
