@@ -1,0 +1,29 @@
+{% extends 'layouts/admin-base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h4>{{action}} Category</h4>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <form action=" {% url 'create.category' %}" method="post">
+
+                    {% csrf_token %}
+
+                    {{ form.as_p }}
+
+                    <button type="submit" class="btn btn-warning">{{action}} Category</button>
+
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

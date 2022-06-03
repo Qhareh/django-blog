@@ -1,6 +1,7 @@
 from email import message
 from email.mime import image
 from os import link
+from tokenize import blank_re
 from unicodedata import name
 from django.db import models
 from django.contrib.auth.models import User
@@ -34,8 +35,8 @@ class Article(models.Model):
         (IN_REVIEW, "In Review"),
         (INACTIVE, "Inactive")
     )
-
-    title = models.CharField(max_length=255,blank=True, null=True )
+    picture = models.ImageField(null="True", blank="True")
+    title = models.CharField(max_length=255, blank=True, null=True )
     content = models.TextField()
     shares = models.IntegerField(default=0)
     likes = models.IntegerField(default=0)
